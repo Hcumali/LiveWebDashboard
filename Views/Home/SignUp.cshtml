@@ -109,15 +109,16 @@
                 console.log(result);
                 console.log(typeof result);
                 if (result == "True") {
-                    console.log("Kayıt işlemi isteği BASARILI.");
+                    alert("You have successfully registered.You are redirected to the homepage.");
+                    window.location.replace("Index");
                 }
                 else {
                     console.log("Kayıt işlemi isteği BASARISIZ.");
+                    alert("Under the age of 18 cannot be registered.You are redirected to the homepage.");
+                    window.location.replace("Index");
                 }
             }
         });
-        alert("You have successfully registered.You are redirected to the homepage.")
-        window.location.replace("Index");
     }
 </script>
 

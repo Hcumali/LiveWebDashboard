@@ -71,15 +71,17 @@
                 console.log(result);
                 console.log(typeof result);
                 if (result == "True") {
+                    alert("You have successfully logged in.You are redirected to the Dashboard.");
                     window.location = "/Dashboard/Index";
                     console.log("İstek BASARILI.");
                 }
                 else {
+                    alert("You entered the wrong username or password.You are redirected to the Home Page.");
+                    window.location.replace("Index");
                     console.log("İstek BASARISIZ.");
                 }
             }
         });
-        alert("You have successfully logged in.You are redirected to the homepage.");
     }
 </script>
 
