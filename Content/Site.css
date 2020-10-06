@@ -9,8 +9,9 @@ body::after {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    opacity:34%;
-    height:900%;
+    opacity:35%;
+    width: 100%;
+    height:550%;
     z-index: -1;
 }
 
