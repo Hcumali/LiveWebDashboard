@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #usern1 {
+        padding:8px;
+        background-color: #e0e0e0;
+        border:1px solid black;
+        border-radius: 21px;  
+        margin-top:50px;
+        margin-bottom:10px;
+
+    }
+
+    #pw1 {
+        padding: 8px;
+        background-color: #e0e0e0;
+        border: 1px solid black;
+        border-radius: 21px;
+        margin-bottom:20px;
+        
+    }
+
+    #but1 {
+        padding: 10px;
+        background-color: #2fcc00;
+        border-radius: 21px;
+        border: 1px solid black;
+        margin-left:8rem;
+    }
+
+</style>
+
+
+<h2 style="text-align:center;font-weight:bolder ; margin-top:25px;color:red ; margin-left:10rem">Sign In</h2>
+
+<div class="container" style="border-radius: 14px ; display:inline-block"> <!--Creating the container-->
+    <div class="row" ; style="text-align:center">
+   
+        <!-- Login Form -->
+
+        <form action="/Home/SignIn" method="post">
+            <!-- Username Textbox-->
+            <label>USERNAME</label>
+            <input id="usern1" type="text" name="userName"><br>
+            <!-- Password Textbox-->
+            <label>PASSWORD</label>
+            <input id="pw1" type="password" name="password"><br>
+            <!--Button-->
+            <button id="but1" type="submit">LOGIN</button>
+        </form>
+
+        <p style="color:red">@ViewBag.Authentication</p>  <!--Information article after runs app-->
+
+    </div>
+</div>
+
+

@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #usern1 {
+        padding: 8px;
+        background-color: #e0e0e0;
+        border: 1px solid black;
+        border-radius: 21px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    #pw1 {
+        padding: 8px;
+        background-color: #e0e0e0;
+        border: 1px solid black;
+        border-radius: 21px;
+        margin-bottom: 10px;
+    }
+
+    #pw2 {
+        padding: 8px;
+        background-color: #e0e0e0;
+        border: 1px solid black;
+        border-radius: 21px;
+        margin-bottom: 10px;
+        margin-left:10px;
+    }
+
+    #mail {
+        padding: 8px;
+        background-color: #e0e0e0;
+        border: 1px solid black;
+        border-radius: 21px;
+        margin-bottom: 10px;
+    }
+
+    #age1 {
+        padding: 8px;
+        background-color: #e0e0e0;
+        border: 1px solid black;
+        border-radius: 21px;
+        margin-bottom: 25px;
+    }
+
+    #but1 {
+        padding: 10px;
+        background-color: #2fcc00;
+        border-radius: 21px;
+        border: 1px solid black;
+        margin-left: 8rem;
+    }
+
+</style>
+
+
+<h2 style="text-align:center;font-weight:bolder ; margin-top:25px;color:red ; margin-left:10rem">Sign Up</h2>
+
+<div class="container" style="border-radius: 14px ; display:inline-block"> <!--Creating the container-->
+    
+    <div class="row" ; style="text-align:center">
+
+        <!-- Login Form -->
+
+        <form action="/Home/SignUp" method="post">
+
+            <!-- Username Textbox-->
+            <label>USERNAME</label>
+            <input id="usern1" type="text" name="userName"><br>
+
+            <!-- Password Textbox-->
+            <label>PASSWORD</label>
+            <input id="pw1" type="password" name="password"><br>
+
+            <label>AGAIN-PW</label>
+            <input id="pw2" type="password"><br>
+
+            <label style="margin-right:30px"> E - MAIL</label>
+            <input id="mail" type="text"><br>
+
+            <label style="margin-right:55px">AGE</label>
+            <input id="age1" type="text"><br>
+
+            <!--Button-->
+            <a href="~/Views/Home/Inde"><button id="but1" type="submit">REGISTER</button></a>
+        </form>
+
+
+    </div>
+</div>
+
+

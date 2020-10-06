@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .tab1{
+            float:right;
+        }
+        .tab2{
+            float: right;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="topnav">
+        <a class="active" href="#kiwilabs">Kiwilabs</a>
+        <a href="#news">News</a>
+        <a href="#about">About</a>
+        <a href="#contacs">Contacs</a>
+        <div class="tab1">@Html.ActionLink("Sign Up", "SignUp", "Home")</div> 
+        <div class="tab2">@Html.ActionLink("Sign In", "SignIn", "Home")</div> 
+        
+
+        @{
+            // ToDo: Cookie check for is logged in
+
+            /*HttpCookie cookie_islogged = Request.Cookies["isLoggedIn"];
+
+
+
+            if (cookie_islogged.Value == "true")
+            {
+                <a class="kayit" href="signup.html">Sign Out</a>
+
+            }
+            else
+            {
+                <a class="giris" href="signin.html">Sign In</a>
+                <a class="kayit" href="signup.html">Sign Up</a>*/
+
+        }
+
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

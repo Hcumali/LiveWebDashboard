@@ -1,0 +1,64 @@
+﻿/* Set padding to keep content from hitting the edges */
+body::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(image.jpeg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity:35%;
+    width: 100%;
+    height:550%;
+    z-index: -1;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #1B3D52;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 19px;
+    }
+
+        .topnav a:hover {
+            background-color: #ADD027;
+            color: white;
+        }
+
+        .topnav a.active {
+            background-color: #ADD027;
+            color: white;
+        }
+
+      
