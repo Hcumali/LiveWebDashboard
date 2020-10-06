@@ -5,7 +5,7 @@
 }
 
 <style>
-    #usern1 {
+    #usern2 {
         padding: 8px;
         background-color: #e0e0e0;
         border: 1px solid black;
@@ -14,7 +14,7 @@
         margin-bottom: 10px;
     }
 
-    #pw1 {
+    #pw2 {
         padding: 8px;
         background-color: #e0e0e0;
         border: 1px solid black;
@@ -22,7 +22,7 @@
         margin-bottom: 10px;
     }
 
-    #pw2 {
+    #pw2_1 {
         padding: 8px;
         background-color: #e0e0e0;
         border: 1px solid black;
@@ -47,7 +47,7 @@
         margin-bottom: 25px;
     }
 
-    #but1 {
+    #btn_register {
         padding: 10px;
         background-color: #2fcc00;
         border-radius: 21px;
@@ -61,36 +61,64 @@
 <h2 style="text-align:center;font-weight:bolder ; margin-top:25px;color:red ; margin-left:10rem">Sign Up</h2>
 
 <div class="container" style="border-radius: 14px ; display:inline-block"> <!--Creating the container-->
-    
     <div class="row" ; style="text-align:center">
 
-        <!-- Login Form -->
-
-        <form action="/Home/SignUp" method="post">
-
-            <!-- Username Textbox-->
             <label>USERNAME</label>
-            <input id="usern1" type="text" name="userName"><br>
-
-            <!-- Password Textbox-->
+            <input id="usern2" type="text"><br>
+        
             <label>PASSWORD</label>
-            <input id="pw1" type="password" name="password"><br>
-
-            <label>AGAIN-PW</label>
             <input id="pw2" type="password"><br>
 
-            <label style="margin-right:30px"> E - MAIL</label>
-            <input id="mail" type="text"><br>
+            <label>AGAIN-PW</label>
+            <input id="pw2_1" type="password"><br>
 
             <label style="margin-right:55px">AGE</label>
             <input id="age1" type="text"><br>
 
-            <!--Button-->
-            <a href="~/Views/Home/Inde"><button id="but1" type="submit">REGISTER</button></a>
-        </form>
-
-
+            
+            <button id="btn_register" onclick="RegisterCheck()">REGISTER</button>
+    
     </div>
 </div>
+
+<script>
+
+    function RegisterCheck() {
+        var username = document.getElementById("usern2").value;
+        var password = document.getElementById("pw2").value;
+        var password2 = document.getElementById("pw2_1").value;
+        var ageS = document.getElementById("age1").value;
+
+        if (username.length < 3 || password.length < 3) {
+            alert("Check your username or pw!");
+            return;
+        }
+
+        if (password != password2) {
+            alert("Doesn't match password1 and password2")
+            return;
+        }
+
+        $.ajax({
+            url: "/Home/RegisterProcess",
+            type: "POST",
+            data: {
+                userNameRegister: username, passwordRegister: password,age: ageS // will be accessible in $_POST['data1']
+            },
+            success: function (result) {
+                console.log(result);
+                console.log(typeof result);
+                if (result == "True") {
+                    console.log("Kayıt işlemi isteği BASARILI.");
+                }
+                else {
+                    console.log("Kayıt işlemi isteği BASARISIZ.");
+                }
+            }
+        });
+        
+        window.location.replace("Index");
+    }
+</script>
 
 

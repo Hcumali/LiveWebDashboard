@@ -24,12 +24,12 @@
         
     }
 
-    #but1 {
+    #btn_login {
         padding: 10px;
         background-color: #2fcc00;
         border-radius: 21px;
         border: 1px solid black;
-        margin-left:8rem;
+        margin-left: 8rem;
     }
 
 </style>
@@ -39,23 +39,47 @@
 
 <div class="container" style="border-radius: 14px ; display:inline-block"> <!--Creating the container-->
     <div class="row" ; style="text-align:center">
-   
-        <!-- Login Form -->
-
-        <form action="/Home/SignIn" method="post">
-            <!-- Username Textbox-->
+            
             <label>USERNAME</label>
-            <input id="usern1" type="text" name="userName"><br>
-            <!-- Password Textbox-->
+            <input id="usern1" type="text"><br>
+            
             <label>PASSWORD</label>
-            <input id="pw1" type="password" name="password"><br>
-            <!--Button-->
-            <button id="but1" type="submit">LOGIN</button>
-        </form>
-
-        <p style="color:red">@ViewBag.Authentication</p>  <!--Information article after runs app-->
-
+            <input id="pw1" type="password"><br>
+            
+            <button id="btn_login" onclick="LoginCheck()">LOGIN</button>
+        
     </div>
 </div>
+
+<script>
+    function LoginCheck() {
+        var username = document.getElementById("usern1").value;
+        var password = document.getElementById("pw1").value;
+
+        if (username.length < 3 || password.length < 3) {
+            alert("Check your username or pw!");
+            return;
+        }
+
+        $.ajax({
+            url: "/Home/LoginProcess",
+            type: "POST",
+            data: {
+                userNameLogin: username, passwordLogin: password // will be accessible in $_POST['data1']
+            },
+            success: function (result) {
+                console.log(result);
+                console.log(typeof result);
+                if (result == "True") {
+                    window.location = "/Dashboard/Index";
+                    console.log("İstek BASARILI.");
+                }
+                else {
+                    console.log("İstek BASARISIZ.");
+                }
+            }
+        });
+    }
+</script>
 
 

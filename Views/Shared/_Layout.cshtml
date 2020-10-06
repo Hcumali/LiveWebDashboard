@@ -8,12 +8,19 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <style>
-        .tab1{
-            float:right;
-        }
-        .tab2{
-            float: right;
-        }
+       .tab1
+       {
+           float:right;
+       }
+       .tab2
+       {
+           float:right;
+       }
+       .tab3
+       {
+           float:right;
+       }
+
     </style>
 
 </head>
@@ -24,26 +31,22 @@
         <a href="#news">News</a>
         <a href="#about">About</a>
         <a href="#contacs">Contacs</a>
-        <div class="tab1">@Html.ActionLink("Sign Up", "SignUp", "Home")</div> 
-        <div class="tab2">@Html.ActionLink("Sign In", "SignIn", "Home")</div> 
-        
 
         @{
             // ToDo: Cookie check for is logged in
+            HttpCookie cookie_islogged = Request.Cookies["isLoggedIn"];
 
-            /*HttpCookie cookie_islogged = Request.Cookies["isLoggedIn"];
-
-
-
-            if (cookie_islogged.Value == "true")
+            if (cookie_islogged == null || cookie_islogged.Value == "False")
             {
-                <a class="kayit" href="signup.html">Sign Out</a>
-
+                <div class="tab1">@Html.ActionLink("Sign Up", "SignUp", "Home")</div>
+                <div class="tab2">@Html.ActionLink("Sign In", "SignIn", "Home")</div>
             }
-            else
+            else if (cookie_islogged.Value != "False")
             {
-                <a class="giris" href="signin.html">Sign In</a>
-                <a class="kayit" href="signup.html">Sign Up</a>*/
+                <div class="tab3">@Html.ActionLink("Sign Out", "Index", "Home")</div>
+                Response.Cookies["isLoggedIn"].Expires = DateTime.Now.AddDays(-1);
+            }
+
 
         }
 
