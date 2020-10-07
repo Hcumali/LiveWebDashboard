@@ -95,7 +95,12 @@
         }
 
         if (password != password2) {
-            alert("Doesn't match password1 and password2")
+            alert("Doesn't match password1 and password2");
+            return;
+        }
+
+        if (ageS < 18) {
+            alert("Under the age of 18 cannot be registered.You are redirected to the homepage.");
             return;
         }
 
@@ -106,17 +111,11 @@
                 userNameRegister: username, passwordRegister: password,age: ageS // will be accessible in $_POST['data1']
             },
             success: function (result) {
-                console.log(result);
-                console.log(typeof result);
-                if (result == "True") {
+                
+                    console.log(result);
                     alert("You have successfully registered.You are redirected to the homepage.");
                     window.location.replace("Index");
-                }
-                else {
-                    console.log("Kayıt işlemi isteği BASARISIZ.");
-                    alert("Under the age of 18 cannot be registered.You are redirected to the homepage.");
-                    window.location.replace("Index");
-                }
+                          
             }
         });
     }

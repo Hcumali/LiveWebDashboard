@@ -1,4 +1,6 @@
-﻿using System;
+﻿using deneme1.DBModels;
+using deneme1.MongoOperations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -50,14 +52,17 @@ namespace deneme1.Controllers
         [HttpPost]
         public Boolean RegisterProcess(string userNameRegister, string passwordRegister, int age)
         {
-            if (userNameRegister != "yyyyy000" && passwordRegister != "12345678" && age >= 18)
+
+            User user = new User
             {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                userName = userNameRegister,
+                password = passwordRegister,
+                Age = age
+            };
+
+            UserOperations.CreateUser(user);
+
+           return true;         
 
         }
 
