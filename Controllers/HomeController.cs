@@ -30,9 +30,11 @@ namespace deneme1.Controllers
         {
             if(userNameLogin=="admin" && passwordLogin == "1234")
             {
-                HttpCookie myCookie = new HttpCookie("isLoggedIn");
-                myCookie.Value = "True";
-                myCookie.Expires = DateTime.Now.AddDays(1);
+                HttpCookie myCookie = new HttpCookie("isLoggedIn")
+                {
+                    Value = "True",
+                    Expires = DateTime.Now.AddDays(1)
+                };
                 Response.Cookies.Add(myCookie);
 
                 return true;
@@ -59,9 +61,11 @@ namespace deneme1.Controllers
 
         }
 
-
-
-
+        [HttpPost]
+        public void DeleteCookie(string cookieName)
+        {
+            Response.Cookies[cookieName].Value = "False";
+        }
 
     }
 }

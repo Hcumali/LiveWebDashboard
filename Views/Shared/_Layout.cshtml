@@ -19,7 +19,26 @@
        .tab3
        {
            float:right;
+
        }
+        #btn_tab3 {
+            overflow: hidden;
+            background-color: #1B3D52;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 19px;
+            border:none;
+        }
+        #btn_tab3:hover
+        {
+            background-color: #ADD027;
+            color: white;
+        }
 
     </style>
 
@@ -27,10 +46,6 @@
 <body>
     
     <div class="topnav">
-        <a class="active" href="#kiwilabs">Kiwilabs</a>
-        <a href="#news">News</a>
-        <a href="#about">About</a>
-        <a href="#contacs">Contacs</a>
 
         @{
             // ToDo: Cookie check for is logged in
@@ -38,15 +53,20 @@
 
             if (cookie_islogged == null || cookie_islogged.Value == "False")
             {
+                <a class="active" href="#kiwilabs">Kiwilabs</a>
+                <a href="#news">News</a>
+                <a href="#about">About</a>
+                <a href="#contacs">Contacs</a>
+
                 <div class="tab1">@Html.ActionLink("Sign Up", "SignUp", "Home")</div>
                 <div class="tab2">@Html.ActionLink("Sign In", "SignIn", "Home")</div>
             }
-            else if (cookie_islogged.Value != "False")
+            else if (cookie_islogged.Value == "True")
             {
-                <div class="tab3">@Html.ActionLink("Sign Out", "Index", "Home")</div>
-                Response.Cookies["isLoggedIn"].Expires = DateTime.Now.AddDays(-1);
-            }
 
+                <div>@Html.ActionLink("Dashboard", "Index", "Dashboard")</div>
+                <div class="tab3"><button id="btn_tab3" onclick="deleteCookies()">Sign Out </button></div>
+            }
 
         }
 
@@ -65,3 +85,17 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script>
+    function deleteCookies() {
+        var cname = "isLoggedIn";
+        var cvalue = "False";
+        var exdays = 1;
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        window.location = "/";
+        console.log(document.cookie);
+    }
+</script>

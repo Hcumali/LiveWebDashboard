@@ -12,7 +12,10 @@ namespace deneme1.Controllers
         public ActionResult Index()
         {
             HttpCookie cookie_islogged = Request.Cookies["isLoggedIn"];
-            if(cookie_islogged == null)
+
+            #region PERMISSION CONTROLS
+            // If user has the display permission for dashboard.
+            if (cookie_islogged == null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -20,6 +23,7 @@ namespace deneme1.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            #endregion
 
             return View();
         }
