@@ -1,7 +1,7 @@
 # LiveWebDashboard
 Welcome my Project !
 
-The project is entered with only an id/password for now.<b>id==admin / password == 1234</b>
+The project is entered with only an id/password for now.<b>id == "admin" / password == "1234"</b>
 
 The only requirement for registration is that you are over 18 years old.
 There is no need to add ip for the database.As soon as successfully registered, the information goes to the database.
