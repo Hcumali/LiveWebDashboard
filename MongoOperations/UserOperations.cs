@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 
 namespace deneme1.MongoOperations
@@ -23,16 +24,15 @@ namespace deneme1.MongoOperations
 
             var filter = Builders<User>.Filter.Eq(x => x.userName, user.userName);
             var firstDocument = collec.Find(filter).ToList();
+            // aynı kullanıcı adıyla kücük yaş gir son büyük yaş gir bug var düzelt
 
-
-            if (firstDocument == null)
+            if (firstDocument == null || firstDocument.Count == 0)
             {
                 collec.InsertOne(user);
                 return true;
             }
             else
             {
-                //alert
                 return false;
             }
 
@@ -47,7 +47,7 @@ namespace deneme1.MongoOperations
             var collec = db.GetCollection<User>("UserInfo");
 
             var filter = Builders<User>.Filter.Eq(x => x.userName, user.userName);
-            filter = filter & (Builders<User>.Filter.Eq(x => x.password, user.password));
+            filter &= (Builders<User>.Filter.Eq(x => x.password, user.password));
 
 
             var firstDocument = collec.Find(filter).ToList();
@@ -60,12 +60,17 @@ namespace deneme1.MongoOperations
         }
 
         // read(find) data from the database
-        public static void FindUser(User user)
+        public static List<User> FindAllUsers()
         {
+            var client = new MongoClient(connectionString);
+            var db = client.GetDatabase("LiveWebDB");
+            var collec = db.GetCollection<User>("UserInfo");
 
+            return collec.Find(_ => true).ToList();
         }
 
-        // delete user from database
+
+        /*// delete user from database
         public static void DeleteUser(User user)
         {
 
@@ -75,6 +80,6 @@ namespace deneme1.MongoOperations
         public static void UpdateUser(User user)
         {
 
-        }
+        }*/
     }
 }

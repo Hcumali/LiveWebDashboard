@@ -31,32 +31,17 @@ namespace deneme1.Controllers
         public Boolean LoginProcess(string userNameLogin, string passwordLogin)
         {
 
-            User user = new User();
-            user.userName = userNameLogin;
-            user.password = passwordLogin;
+            User user = new User
+            {
+                userName = userNameLogin,
+                password = passwordLogin
+            };
 
             var loginCheck = UserOperations.IsThereUser(user);
             
             if(loginCheck)
             {
-                HttpCookie myCookie = new HttpCookie("isLoggedIn")
-                {
-                    Value = "True",
-                    Expires = DateTime.Now.AddDays(1)
-                };
-
-                Response.Cookies.Add(myCookie);
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            
-            
-            /* if(userNameLogin=="admin" && passwordLogin == "1234")
-            {
+                // for navbar icon's add (Dashboard and Sign out) 
                 HttpCookie myCookie = new HttpCookie("isLoggedIn")
                 {
                     Value = "True",
@@ -64,13 +49,20 @@ namespace deneme1.Controllers
                 };
                 Response.Cookies.Add(myCookie);
 
+                // for read username after entered dashboard
+                HttpCookie UserNameValue = new HttpCookie("userName")
+                {
+                    Value = userNameLogin,
+                    Expires = DateTime.Now.AddDays(1)
+                };
+                Response.Cookies.Add(UserNameValue);
+
                 return true;
-        
             }
             else
             {
                 return false;
-            }*/
+            }
             
         }
 
@@ -85,7 +77,9 @@ namespace deneme1.Controllers
                 Age = age
             };
 
-            return UserOperations.CreateUser(user);
+            Boolean Value = UserOperations.CreateUser(user);
+
+            return Value;
         }
 
         [HttpPost]

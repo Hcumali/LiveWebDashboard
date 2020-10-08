@@ -11,21 +11,31 @@ namespace deneme1.Controllers
         
         public ActionResult Index()
         {
-            HttpCookie cookie_islogged = Request.Cookies["isLoggedIn"];
 
             #region PERMISSION CONTROLS
+            HttpCookie cookie_islogged = Request.Cookies["isLoggedIn"];
             // If user has the display permission for dashboard.
             if (cookie_islogged == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            if(cookie_islogged.Value != "True")
+            if (cookie_islogged.Value != "True")
             {
                 return RedirectToAction("Index", "Home");
             }
             #endregion
 
-            return View();
+            
+
+            var view = new Models.DashboardModel();
+
+            HttpCookie DashUserName = Request.Cookies["userName"];
+            view.userName = Server.HtmlEncode(DashUserName.Value);
+
+            view.userList = MongoOperations.UserOperations.FindAllUsers();
+
+            return View(view);
+
         }
 
         public ActionResult SignOut()
