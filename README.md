@@ -1,17 +1,19 @@
 # LiveWebDashboard
+Welcome my Project !
 
-Projemin veritabanı ile herhangi bir ilişiği olmadından dolayı tek bir id-pw ile giriş yapılıyor.
-ıd:admin  pw:1234
+The project is entered with only an id/password for now.<b>id == "admin" / password == "1234"</b>
 
-Ana sayfada Kiwilabs News About ve Contacs olmak üzere 4 bölüm vardır ve tıklanarak gidilebilir.
+The only requirement for registration is that you are over 18 years old.
+There is no need to add ip for the database.As soon as successfully registered, the information goes to the database.
+but you cannot login with the same information for now.
 
-Sign Up(Kayıt ol) kısmından 18 yaş üstü herkes kayıt olabilir fakat veritabanına aktarılmadıgından dolayı tek bir id-pw ile giriş yapılır.
-18 yaşından kücük biri kayıt olmayı denerse ekrana alert gelir ve ana sayfaya yönlendirilir
+There are four main sections on the homepage and can be accessed by clicking on them.
 
-Giriş kısmından id-pw doğru girilirse admin paneline yönlendirilirsiniz.Eğer yanlış girilirse alert alıp ana sayfaya gidersiniz.
+As soon as the information is entered correctly in the login section, you can direct it to the dashboard.
+If it is entered incorrectly, you will receive an alert and go to the homepage.
 
-Projemde http cookie yapısını kullanarak backend ve frontent arasındaki yapıyı destekledim.
+Your session remains open until you click the sign out button.
 
-Dashboard'ım mevcut fakat içini doldurmadım henüz.
+In my project, I supported the structure between backend and frontend by using the http cookie structure.
 
-İncelediğiniz için teşekkür ederim.Hüseyin Cumalı
+Thank you for looking!
