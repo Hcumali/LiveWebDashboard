@@ -12,6 +12,8 @@ There are four main sections on the homepage and can be accessed by clicking on 
 As soon as the information is entered correctly in the login section, you can direct it to the dashboard.
 If it is entered incorrectly, you will receive an alert and go to the homepage.
 
+Your session remains open until you click the sign out button.
+
 In my project, I supported the structure between backend and frontend by using the http cookie structure.
 
 Thank you for looking!
