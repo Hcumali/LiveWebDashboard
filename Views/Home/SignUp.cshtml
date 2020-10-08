@@ -111,10 +111,13 @@
                 userNameRegister: username, passwordRegister: password,age: ageS // will be accessible in $_POST['data1']
             },
             success: function (result) {
-                
-                    console.log(result);
+                if (result == true) {
                     alert("You have successfully registered.You are redirected to the homepage.");
                     window.location.replace("Index");
+                }
+                else {
+                    alert("Username already has been taken.");
+                }
                           
             }
         });

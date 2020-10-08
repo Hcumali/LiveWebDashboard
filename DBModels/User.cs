@@ -8,10 +8,9 @@ namespace deneme1.DBModels
 {
     public class User
     {
-        public MongoDB.Bson.ObjectId ID;
+        public MongoDB.Bson.ObjectId _id;
         public string userName;
         public string password;
         public int Age;
-
     }
 }

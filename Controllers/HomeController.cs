@@ -30,7 +30,32 @@ namespace deneme1.Controllers
         [HttpPost]
         public Boolean LoginProcess(string userNameLogin, string passwordLogin)
         {
-            if(userNameLogin=="admin" && passwordLogin == "1234")
+
+            User user = new User();
+            user.userName = userNameLogin;
+            user.password = passwordLogin;
+
+            var loginCheck = UserOperations.IsThereUser(user);
+            
+            if(loginCheck)
+            {
+                HttpCookie myCookie = new HttpCookie("isLoggedIn")
+                {
+                    Value = "True",
+                    Expires = DateTime.Now.AddDays(1)
+                };
+
+                Response.Cookies.Add(myCookie);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+            
+            /* if(userNameLogin=="admin" && passwordLogin == "1234")
             {
                 HttpCookie myCookie = new HttpCookie("isLoggedIn")
                 {
@@ -45,7 +70,7 @@ namespace deneme1.Controllers
             else
             {
                 return false;
-            }
+            }*/
             
         }
 
@@ -60,10 +85,7 @@ namespace deneme1.Controllers
                 Age = age
             };
 
-            UserOperations.CreateUser(user);
-
-           return true;         
-
+            return UserOperations.CreateUser(user);
         }
 
         [HttpPost]
