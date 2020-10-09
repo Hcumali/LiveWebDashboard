@@ -86,11 +86,26 @@ namespace deneme1.MongoOperations
 
         }
 
-        /*// update user from database
-        public static void UpdateUser(User user)
+        // update user from database
+        public static Boolean UpdateUser(User user,string username)
         {
+            var client = new MongoClient(connectionString);
+            var db = client.GetDatabase("LiveWebDB");
+            var collec = db.GetCollection<User>("UserInfo");
 
-        }*/
+
+            var filter = Builders<User>.Filter.Eq(x => x.userName, username);
+            var update = Builders<User>.Update.Set(x => x.password , user.password);
+            update = update.Set(x => x.Age , user.Age);
+            update = update.Set(x => x.userName , user.userName);
+            UpdateResult result = collec.UpdateOne(filter, update);
+
+            Boolean result2 = result.IsAcknowledged;
+
+            return result2;
+
+
+        }
 
         public static User GetUserInfo(string userName)
         {

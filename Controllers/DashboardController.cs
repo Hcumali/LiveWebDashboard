@@ -52,6 +52,19 @@ namespace deneme1.Controllers
         }
 
         [HttpPost]
+        public Boolean UpdateProcess(string usernameOld,string usernameUpdate,string passwordUpdate,int ageUpdate)
+        {
+            User user = new User();
+
+            user.userName = usernameUpdate;
+            user.password = passwordUpdate;
+            user.Age = ageUpdate;
+            Boolean result=UserOperations.UpdateUser(user,usernameOld);
+            return result;
+           
+        }
+
+        [HttpPost]
         public string GetUser(string userName)
         {
            User userInfo = MongoOperations.UserOperations.GetUserInfo(userName);

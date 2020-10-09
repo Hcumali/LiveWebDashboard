@@ -90,7 +90,7 @@
                 <input id="age_txt" type="text"></input>
             </div>
             <div id="userDetailsToButton" class="col-lg-6" style="text-align:center">
-                <button id="btn_update" class="btn btn-primary" style="margin-top:50px;margin-right:80px">UPDATE</button><br />
+                <button id="btn_update" class="btn btn-primary" onclick="UpdateUser()" style="margin-top:50px;margin-right:80px">UPDATE</button><br />
                 <button id="btn_delete" class="btn btn-danger" onclick="DeleteCheck()" style="margin-top:50px;margin-right:80px">DELETE</button>
             </div>
 
@@ -101,7 +101,7 @@
 
 </div>
 
-<script>
+<script> 
     function DeleteCheck() { 
 
         var Verification = window.confirm("The user information you selected will be deleted.DO YOU WANT TO CONTİNUE ?");
@@ -111,7 +111,7 @@
 
         var username = document.getElementById("username_txt").value;
 
-        $.ajax({  // Request to RegisterProcess on DashboardController
+        $.ajax({  // Request to DeleteUserProcess on DashboardController
             url: "/Dashboard/DeleteUserProcess",
             type: "POST",
             data: {
@@ -166,8 +166,45 @@
 
             }
         });
+    }
+
+    function UpdateUser() {
+
+        var Verification = window.confirm("The user information you selected will be update.DO YOU WANT TO CONTİNUE ?");
+        if (!Verification) {
+            return;
+        }
+
+        var e = document.getElementById("user_select");
+        var strUser = e.options[e.selectedIndex].value;
+
+        var usernameNew = document.getElementById("username_txt").value;
+        var passwordNew = document.getElementById("password_txt").value;
+        var ageNew = document.getElementById("age_txt").value;
 
 
+        $.ajax({  // Request to UpdateProcess on DashboardController
+            url: "/Dashboard/UpdateProcess",
+            type: "POST",
+            data: {
+                usernameOld: strUser, usernameUpdate:usernameNew, passwordUpdate:passwordNew, ageUpdate:ageNew // will be accessible in $_POST['data1']
+            },
+            success: function (result) {
+
+                console.log(result);
+                console.log(typeof result);
+
+                if (result == "True") {
+                    console.log("İstek BASARILI.");
+                    alert("User successfully updated");
+                    window.location.replace("/Dashboard/Index");
+                }
+                else {
+                    console.log("İstek BASARISIZ.");
+                    alert("ERROR !");
+                }
+            }
+        });
     }
 </script>
 
