@@ -104,6 +104,11 @@
 <script>
     function DeleteCheck() { 
 
+        var Verification = window.confirm("The user information you selected will be deleted.DO YOU WANT TO CONTİNUE ?");
+        if (!Verification) {
+            return;
+        }
+
         var username = document.getElementById("username_txt").value;
 
         $.ajax({  // Request to RegisterProcess on DashboardController
