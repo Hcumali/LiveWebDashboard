@@ -1,4 +1,6 @@
-﻿using System;
+﻿using deneme1.DBModels;
+using deneme1.MongoOperations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -41,6 +43,20 @@ namespace deneme1.Controllers
         public ActionResult SignOut()
         {
             return View();
+        }
+
+        [HttpPost]
+        public Boolean DeleteUserProcess(string usernameDelete)
+        {
+            return UserOperations.DeleteUser(usernameDelete);
+        }
+
+        [HttpPost]
+        public string GetUser(string userName)
+        {
+           User userInfo = MongoOperations.UserOperations.GetUserInfo(userName);
+            string userInfo_str = userInfo.userName + "," + userInfo.password + "," + userInfo.Age;
+            return userInfo_str;
         }
     }
 }

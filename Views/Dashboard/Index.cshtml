@@ -1,42 +1,168 @@
 ﻿@model deneme1.Models.DashboardModel
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    #username_txt {
+        padding: 6px;
+        border-radius: 12px;
+        margin: 5px 3px 10px 3px;
+    }
+    #password_txt {
+        padding: 6px;
+        border-radius: 12px;
+        margin: 5px 3px 10px 3px;
+    }
+    #age_txt {
+        padding: 6px;
+        border-radius: 12px;
+        margin: 5px 3px 10px 3px;
+    }
+    label{
+        color:white;
+    }
+
+
+</style>
+
 <div class="container-fluid" style="margin-top:10px ; padding-bottom:50rem">
 
-    <h1 id="welcome_message" style="font-weight:bolder;"> Welcome @Model.userName </h1>
+    <h1 id="welcome_message" style="font-weight:bolder;"> Welcome @Model.userName </h1><br />
 
-    <div class="col-md-8" style="background-color:darkorange">
-        <h2>User's Info</h2>
-        <p style="font-weight:bolder;font-size:large">Information of all users</p>
-        <p style="font-weight:bold;font-size:large">ID / USERNAME / PASSWORD / AGE</p>
-
+    <div class="col-md-6" style="background-color:darkorange">
+        <h2 style="font-weight:bolder">User's Info</h2>
+        <p style="font-weight:bold;font-size:medium">Information of all users</p><br />
 
         <table>
+            <tr>
+                <th>User ID</th>
+                <th>UserName</th>
+                <th>Password</th>
+                <th>Age</th>
+            </tr>
+
             @{
                 foreach (var item in Model.userList)
                 {
-                    <tr style = "font-weight:bold;font-size:medium;color:white">
-                        <td><p>@item._id---/---</p></td>
-                        <td><p>@item.userName---/---</p></td>
-                        <td><p>@item.password---/---</p></td>
-                        <td><p>@item.Age</p></td>
-                    </tr>                                    
+                    <tr style="font-weight:bold;font-size:medium;color:white">
+                        <td style="padding:10px;">@item._id    </td>
+                        <td style="padding:10px;">@item.userName    </td>
+                        <td style="padding:10px;">@item.password    </td>
+                        <td style="padding:10px;">@item.Age    </td>
+                    </tr>
+
                 }
             }
         </table>
+    </div>  <!--User's Info side-->
 
-        
+    <div class="col-md-6" style="background-color:darkolivegreen">
+        <h2 style="text-align:center;margin-bottom:4rem;font-weight:bolder">Admin Panel</h2>
 
 
-    </div>
+        <div class="row" style="text-align:center">
+
+            <label style="color:white; margin-right:3rem">Select User</label>
+
+            <select id="user_select" style="width:15rem; font-size:larger" onchange="SelectUser()">
+                @{
+                    foreach (var item in Model.userList)
+                    {
+                        <option>@item.userName</option>
+                    }
+                }
+            </select>
+
+        </div>
 
 
-    <div class="col-md-4" style="background-color:darkolivegreen">
-        <h2>Admin Panel</h2>
-    </div>
+        <div id="userDetails" class="row" style="display:none">
+
+            <div id="userDetailsToText" class="col-lg-6" style="float:left;vertical-align:middle">
+                <label>USERNAME</label>
+                <input id="username_txt" type="text"></input><br>
+                <label>PASSWORD</label>
+                <input id="password_txt" type="text"></input><br>
+                <label>AGE</label><br>
+                <input id="age_txt" type="text"></input>
+            </div>
+            <div id="userDetailsToButton" class="col-lg-6" style="text-align:center">
+                <button id="btn_update" class="btn btn-primary" style="margin-top:50px;margin-right:80px">UPDATE</button><br />
+                <button id="btn_delete" class="btn btn-danger" onclick="DeleteCheck()" style="margin-top:50px;margin-right:80px">DELETE</button>
+            </div>
+
+        </div>
+
+
+    </div>  <!--Admin Panel side-->
 
 </div>
+
+<script>
+    function DeleteCheck() { 
+
+        var username = document.getElementById("username_txt").value;
+
+        $.ajax({  // Request to RegisterProcess on DashboardController
+            url: "/Dashboard/DeleteUserProcess",
+            type: "POST",
+            data: {
+                usernameDelete: username // will be accessible in $_POST['data1']
+            },
+            success: function (result) {
+
+                console.log(result);
+                console.log(typeof result);
+
+                if (result == "True") {
+                    console.log("İstek BASARILI.");
+                    alert("User successfully deleted");
+                    window.location.replace("/Dashboard/Index");
+                }
+                else {
+                    console.log("İstek BASARISIZ.");
+                    alert("ERROR !");
+                }
+            }
+        });
+    }
+
+    function SelectUser() {
+        var e = document.getElementById("user_select");
+        var strUser = e.options[e.selectedIndex].value;
+        console.log(strUser);
+
+
+        $.ajax({
+            url: "/Dashboard/GetUser",
+            type: "POST",
+            data: {
+                userName: strUser // will be accessible in $_POST['data1']
+            },
+            success: function (result) {
+                console.log(result);
+                console.log(typeof result);
+                var parts = result.split(',');
+                console.log(parts.length);
+
+                if (parts.length == 3) {
+                    var userDetailsDiv = document.getElementById("userDetails");
+                    userDetailsDiv.style.display = "inline";
+                    document.getElementById("username_txt").value = parts[0];
+                    document.getElementById("password_txt").value = parts[1];
+                    document.getElementById("age_txt").value = parts[2];
+
+                }
+
+
+
+            }
+        });
+
+
+    }
+</script>
 

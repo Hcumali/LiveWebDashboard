@@ -1,4 +1,5 @@
 ﻿using deneme1.DBModels;
+using Microsoft.Ajax.Utilities;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -70,16 +71,37 @@ namespace deneme1.MongoOperations
         }
 
 
-        /*// delete user from database
-        public static void DeleteUser(User user)
+        // delete user from database
+        public static Boolean DeleteUser(string userName)
         {
+
+            var client = new MongoClient(connectionString);
+            var db = client.GetDatabase("LiveWebDB");
+            var collec = db.GetCollection<User>("UserInfo");
+            var filter = Builders<User>.Filter.Eq(x => x.userName, userName);
+
+            
+
+            return collec.DeleteOne(filter).IsAcknowledged;
 
         }
 
-        // update user from database
+        /*// update user from database
         public static void UpdateUser(User user)
         {
 
         }*/
+
+        public static User GetUserInfo(string userName)
+        {
+            var client = new MongoClient(connectionString);
+            var db = client.GetDatabase("LiveWebDB");
+            var collec = db.GetCollection<User>("UserInfo");
+
+            var filter = Builders<User>.Filter.Eq(x => x.userName, userName);
+
+            return collec.Find(filter).ToList()[0];
+
+        }
     }
 }
