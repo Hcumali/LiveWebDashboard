@@ -40,7 +40,7 @@ The Landing Page
 ![](Content/HomePage.png)<br>
 The Dashboard Page
 ![](Content/DashboardPage.png)<br>
-The Gif of My Project
+The Gif of My Project<br>
 ![](Content/GIF.gif)<br><br>
 
 Thanks for looking!
