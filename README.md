@@ -1,20 +1,18 @@
-# LiveWebDashboard
-Welcome my Project !
+<h1>LiveWebDashboard</h1>
 
-<b>You can sign up and login to dashboard.</b>
-Dashboard has two parts.
-These are User's info and Admin Panel.
+Projemde bir adet landing page ve bir adet Dashboard page bulunmaktadır.
+Landing page içerisinde Home, News, About, Contact ve SignIn , SignUp olmak üzere 6 kısıma sahiptir.
 
-The only requirement for registration is that you are over 18 years old.
-There is no need to add ip for the database.As soon as successfully registered, the information goes to the database.
+<h3>Development Environments and Dependency</h3>
 
-There are four main sections on the homepage and can be accessed by clicking on them.
+<h3>Added Features</h3>
+//sign in , up 
+// login olmadan dashobarda giriş izni yok
+// kullanılan çerezler sayesinde sayfadan çıkılsa bile tekrara sayfaya dönüldüğünde giriş yapılmış şekilde bulunur
 
-As soon as the information is entered correctly in the login section, you can go to the dashboard.
-If it is entered incorrectly, you will receive an alert and go to the homepage.
+//image dashboard
 
-<b>Your session remains open until you click the sign out button.</b>
+// update delete
 
-In my project, I supported the structure between backend and frontend by using the http cookie structure.
 
-Thank you for looking!
+//azure
