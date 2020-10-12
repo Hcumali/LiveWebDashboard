@@ -41,6 +41,6 @@ The Landing Page
 The Dashboard Page
 ![](Content/DashboardPage.png)<br>
 The Gif of My Project
-![](Content/HomePage.png)<br><br>
+![](Content/GIF.gif)<br><br>
 
 Thanks for looking!
