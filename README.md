@@ -33,12 +33,14 @@ After selecting any user in the Admin Panel, you will see that user's informatio
 It deletes the information of the user you selected from the database and a warning message appears before deleting.
 
 <h5>Update Function</h5>
-After clicking the button, it updates the user information you changed. And before updating, a warning message appears on the screen.<br>
+After clicking the button, it updates the user information you changed. And before updating, a warning message appears on the screen.<br><br><br>
 
 Link of my project uploaded to Microsoft Azure : https://livewebdashboard.azurewebsites.net <br><br>
 The Landing Page
 ![](Content/HomePage.png)<br>
 The Dashboard Page
-![](Content/DashboardPage.png)<br><br>
+![](Content/DashboardPage.png)<br>
+The Gif of My Project
+![](Content/HomePage.png)<br><br>
 
 Thanks for looking!
