@@ -88,6 +88,7 @@
 
 <script>
     function deleteCookies() {
+
         var cname = "isLoggedIn";
         var cvalue = "False";
         var exdays = 1;
@@ -96,6 +97,7 @@
         var expires = "expires=" + d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         window.location = "/";
+
         console.log(document.cookie);
     }
 </script>
