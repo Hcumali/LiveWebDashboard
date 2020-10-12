@@ -1,20 +1,37 @@
-# LiveWebDashboard
-Welcome my Project !
+<h1>LiveWebDashboard</h1>
+The reason I write this project is to develop myself in the .Net MVC field.
+There is a Landing page and a Dashboard page in my project.
+The Landing page has six sections: Home, News, About, Contact and SignIn, SignUp.
+In the Dashboard page, there are two main sections, Users Info and Admin Panel.
 
-<b>You can sign up and login to dashboard.</b>
-Dashboard has two parts.
-These are User's info and Admin Panel.
+<h3>Development Environments and Dependency</h3>
+While writing this project, I used the 2019 model of visual studio and the 4.7.2 version of .Net Framework.
 
-The only requirement for registration is that you are over 18 years old.
-There is no need to add ip for the database.As soon as successfully registered, the information goes to the database.
+<h3>Added Features</h3>
+<h5>Sign Up</h5>
+If the username or password is not less than 3 characters;<br>
+If two passwords you entered match with each other;<br>
+If you are 18 or over 18 years old;<br>
+If the username you entered has not been taken before;<br>
 
-There are four main sections on the homepage and can be accessed by clicking on them.
+You will register successfully and your information will be successfully written into the database.
 
-As soon as the information is entered correctly in the login section, you can go to the dashboard.
-If it is entered incorrectly, you will receive an alert and go to the homepage.
+<h5>Sign In</h5>
+After you register, if your username and password are not wrong, <br>
+your information is read from the database and ,you can log in without any problems.
 
-<b>Your session remains open until you click the sign out button.</b>
+<h5>Dashboard Side</h5>
+Firstly, You do not have permission to access the Dashboard unless you are logged in.<br>
+I provided this structure using cookies.
+Thanks to the cookies used, as long as there is no exit, even if the page is exited, when the page is returned, it is found as logged in.
+The "Welcome Username" expression you see when you enter the dashboard is also written thanks to the cookies.
 
-In my project, I supported the structure between backend and frontend by using the http cookie structure.
+<h5>Delete Function</h5>
 
-Thank you for looking!
+<h5>Update Function</h5>
+
+Link of my project uploaded to Microsoft Azure : https://livewebdashboard.azurewebsites.net 
+
+//image dashboard
+
+
