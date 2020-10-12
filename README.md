@@ -24,7 +24,7 @@ your information is read from the database and ,you can log in without any probl
 <h5>Dashboard Side</h5>
 Firstly, You do not have permission to access the Dashboard unless you are logged in.<br>
 I provided this structure using cookies.
-Thanks to the cookies used, as long as there is no exit, even if the page is exited, when the page is returned, it is found as logged in.
+Thanks to the cookies used, as long as there is no exit, even if the page is exited, when the page is returned, it is found as logged in.<br>
 The "Welcome Username" expression you see when you enter the dashboard is also written thanks to the cookies.<br><br>
 
 After selecting any user in the Admin Panel, you will see that user's information and two buttons.
@@ -33,11 +33,12 @@ After selecting any user in the Admin Panel, you will see that user's informatio
 It deletes the information of the user you selected from the database and a warning message appears before deleting.
 
 <h5>Update Function</h5>
-After clicking the button, it updates the user information you changed. And before updating, a warning message appears on the screen.
+After clicking the button, it updates the user information you changed. And before updating, a warning message appears on the screen.<br>
 
-Link of my project uploaded to Microsoft Azure : https://livewebdashboard.azurewebsites.net 
-
-
-
+Link of my project uploaded to Microsoft Azure : https://livewebdashboard.azurewebsites.net <br><br>
+The Landing Page
+![](Content/HomePage.png)<br>
+The Dashboard Page
+![](Content/DashboardPage.png)<br><br>
 
 Thanks for looking!
